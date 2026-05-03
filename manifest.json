@@ -1,11 +1,20 @@
 {
-  "name": "한자부수학습",
+  "name": "부수 214",
+  "short_name": "부수 214",
+  "description": "한자 부수 214자 학습 앱",
+  "start_url": "./index.html",
   "display": "standalone",
-  "start_url": "한자부수4.html",
+  "background_color": "#0f0e0d",
+  "theme_color": "#e8a04a",
   "icons": [
     {
       "src": "한자부수아이콘.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "한자부수아이콘.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
