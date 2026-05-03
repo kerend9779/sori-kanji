@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>部首 214</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0f0e0d; --card:#1c1a18; --card2:#242220; --border:#2e2b28;
+  --accent:#e8a04a; --accent2:#c8623a;
+  --text:#f0ece6; --text2:#a09080; --text3:#6a5f55;
+  --green:#4caf7d; --red:#e05757;
+  --btn-ng-bg:#2a1a1a; --btn-ng-c:#e05757; --btn-ng-b:#3d2020;
+  --btn-ok-bg:#162318; --btn-ok-c:#4caf7d; --btn-ok-b:#1e3326;
+  --shadow:none; --r:18px;
+}
+body.light {
+  --bg:#f0ece5; --card:#ffffff; --card2:#e8e3da; --border:#cdc7bc;
+  --accent:#b85c30; --accent2:#8f3e18;
+  --text:#1a1612; --text2:#6b5f52; --text3:#9e9488;
+  --green:#2b7a4b; --red:#be3a2e;
+  --btn-ng-bg:#fde8e8; --btn-ng-c:#be3a2e; --btn-ng-b:#f5c0bb;
+  --btn-ok-bg:#e4f5ec; --btn-ok-c:#2b7a4b; --btn-ok-b:#b8e0cb;
+  --shadow:0 2px 18px rgba(0,0,0,0.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Noto Sans JP',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;transition:background .2s,color .2s}
+button{cursor:pointer;font-family:inherit}
+.screen{display:none;width:100%;max-width:480px;flex-direction:column;align-items:center}
+.screen.active{display:flex}
+
+/* LIST */
+.list-topbar{width:100%;padding:20px 20px 14px;display:flex;justify-content:space-between;align-items:center}
+.list-brand{font-family:'Noto Sans JP',sans-serif;font-size:20px;font-weight:700;color:var(--accent);letter-spacing:.05em;line-height:1.2}
+.list-brand .by{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:400;color:var(--text3);letter-spacing:.04em;margin-left:6px;vertical-align:middle}
+.list-brand small{display:block;font-size:11px;color:var(--text3);font-weight:400;margin-top:3px}
+.theme-btn{background:var(--card2);border:1.5px solid var(--border);border-radius:22px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--text2);display:flex;align-items:center;gap:5px;transition:all .15s}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+.list-all-btn{margin:0 16px;width:calc(100% - 32px);background:var(--accent);border:none;border-radius:14px;padding:14px;font-size:14px;font-weight:700;color:#000;transition:background .15s}
+.list-all-btn:hover{background:var(--accent2);color:#fff}
+.group-list{width:100%;margin-top:10px}
+.sg{width:100%;padding:0 16px 10px}
+.sg-head{display:flex;justify-content:space-between;align-items:center;padding:9px 4px 7px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.sg-title{font-size:13px;font-weight:700;color:var(--accent)}
+.sg-right{display:flex;align-items:center;gap:8px}
+.done-badge{font-size:11px;color:var(--green);border:1px solid var(--green);border-radius:8px;padding:2px 8px;font-weight:600}
+.sg-btn{background:var(--card2);border:1px solid var(--border);border-radius:9px;color:var(--text2);font-size:12px;font-weight:600;padding:4px 12px;transition:all .15s}
+.sg-btn:hover{border-color:var(--accent);color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:5px 9px;display:flex;align-items:center;gap:5px}
+.chip-k{font-family:'Noto Sans JP',sans-serif;font-size:17px;font-weight:400;color:var(--text)}
+.chip-r{font-size:10px;color:var(--text3)}
+
+/* STUDY */
+.study-head{width:100%;padding:14px 16px 10px;display:flex;flex-direction:column;gap:9px}
+.study-toprow{display:flex;justify-content:space-between;align-items:center}
+.back-btn{background:none;border:1px solid var(--border);border-radius:9px;color:var(--text2);font-size:12px;padding:5px 12px;transition:all .15s}
+.back-btn:hover{border-color:var(--accent);color:var(--accent)}
+.study-title-area{text-align:center;flex:1}
+.study-title{font-family:'Noto Sans JP',sans-serif;font-size:15px;font-weight:700;color:var(--accent)}
+.study-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.counters{display:flex;gap:8px;align-items:center}
+.ctr{display:flex;align-items:center;gap:5px;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:12px;font-weight:600}
+.ctr .dot{width:7px;height:7px;border-radius:50%}
+.ctr.ok .dot{background:var(--green)}
+.ctr.ng .dot{background:var(--red)}
+.prog-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;transition:width .2s}
+.prog-txt{font-size:11px;color:var(--text3);text-align:right}
+
+/* CARD */
+.card-wrap{width:100%;padding:0 14px;flex:1}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:26px 20px 22px;min-height:360px;display:flex;flex-direction:column;align-items:center;position:relative;box-shadow:var(--shadow);transition:background .2s,border-color .2s}
+.card-bar{position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
+.stroke-tag{font-size:11px;color:var(--text3);background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:2px 8px;white-space:nowrap}
+.card-actions{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.ca-btn{background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:11px;padding:4px 9px;white-space:nowrap;transition:all .15s}
+.ca-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ca-btn.on{background:var(--accent);border-color:var(--accent);color:#000}
+.auto-cluster{display:flex;align-items:stretch;background:var(--card2);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.ac-main{background:none;border:none;color:var(--text2);font-size:11px;padding:4px 8px;white-space:nowrap;transition:background .15s,color .15s}
+.ac-main:hover{color:var(--accent)}
+.ac-main.on{background:var(--red);color:#fff}
+.ac-sep{width:1px;background:var(--border);flex-shrink:0}
+.ac-step{background:none;border:none;color:var(--text2);font-size:13px;font-weight:700;padding:2px 6px;display:flex;align-items:center;transition:color .12s,background .12s}
+.ac-step:hover{color:var(--accent);background:rgba(232,160,74,.1)}
+.ac-val{font-size:11px;font-weight:700;color:var(--accent);min-width:26px;text-align:center;display:flex;align-items:center;justify-content:center;user-select:none}
+.kanji-big{font-family:'Noto Sans JP',sans-serif;font-size:96px;font-weight:400;line-height:1;margin:46px 0 14px;color:var(--text);user-select:none}
+.detail{width:100%}
+.detail.hide{display:none}
+.reading{text-align:center;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:10px}
+.assoc-box{background:var(--card2);border:1px solid var(--border);border-radius:11px;padding:11px 15px;width:100%}
+.assoc-lbl{font-size:10px;color:var(--text3);letter-spacing:.08em;margin-bottom:5px}
+.assoc-txt{font-size:13px;color:var(--text);line-height:1.7}
+.hint-area{margin-top:16px;text-align:center;width:100%}
+.hint-btn{background:var(--card2);border:1px dashed var(--border);border-radius:10px;padding:9px 26px;font-size:13px;color:var(--text3);display:inline-block;transition:all .15s}
+.hint-btn:hover{border-color:var(--accent);color:var(--accent);border-style:solid}
+.timer-wrap{position:absolute;bottom:12px;right:14px;display:none}
+.timer-wrap.show{display:block}
+.t-svg{width:38px;height:38px;transform:rotate(-90deg)}
+.t-bg{fill:none;stroke:var(--border);stroke-width:3}
+.t-fg{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:94.25;stroke-dashoffset:0;stroke-linecap:round}
+.t-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:11px;font-weight:700;color:var(--accent)}
+
+/* ACTION BUTTONS */
+.btn-row{width:100%;padding:12px 14px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.abtn{border:none;border-radius:13px;padding:14px 10px;font-size:14px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .12s,color .12s,border-color .12s}
+.abtn sub{font-size:10px;font-weight:400;opacity:.75}
+.abtn:active{transform:scale(.96)}
+.abtn-ng{background:var(--btn-ng-bg);color:var(--btn-ng-c);border:1px solid var(--btn-ng-b)}
+.abtn-ng:hover,.abtn-ng.flash{background:var(--red);color:#fff;border-color:var(--red)}
+.abtn-ok{background:var(--btn-ok-bg);color:var(--btn-ok-c);border:1px solid var(--btn-ok-b)}
+.abtn-ok:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.round-row{font-size:11px;color:var(--text3);margin-top:9px;text-align:center}
+.round-tag{display:inline-block;background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:1px 8px;margin-left:4px;color:var(--accent);font-weight:600}
+
+/* COMPLETE */
+.done-screen{display:none;flex-direction:column;align-items:center;padding:40px 20px;text-align:center;gap:11px;width:100%;max-width:480px}
+.done-screen.show{display:flex}
+.done-emoji{font-size:46px}
+.done-title{font-size:20px;font-weight:700;color:var(--accent)}
+.done-sub{font-size:13px;color:var(--text2);line-height:1.9}
+.dbtn{width:100%;border:none;border-radius:13px;padding:13px;font-size:14px;font-weight:700;transition:all .15s}
+.dbtn.p{background:var(--accent);color:#000}
+.dbtn.p:hover{background:var(--accent2);color:#fff}
+.dbtn.s{background:var(--card2);color:var(--text2);border:1px solid var(--border)}
+.dbtn.s:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SETTINGS */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;align-items:flex-end;justify-content:center}
+.overlay.show{display:flex}
+.sheet{background:var(--card);border:1px solid var(--border);border-radius:22px 22px 0 0;width:100%;max-width:480px;padding:26px 22px 38px;animation:up .2s cubic-bezier(.4,0,.2,1)}
+@keyframes up{from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}}
+.sheet-title{font-size:16px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.sheet-close{margin-left:auto;background:none;border:none;color:var(--text3);font-size:20px;line-height:1;padding:2px 6px}
+.sheet-close:hover{color:var(--text)}
+.srow{padding:16px 0;border-top:1px solid var(--border)}
+.srow-label{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.srow-desc{font-size:11px;color:var(--text3);line-height:1.6;margin-bottom:12px}
+.big-stepper{display:flex;align-items:center;justify-content:center;gap:18px;padding:4px 0 10px}
+.big-step-btn{width:42px;height:42px;border-radius:50%;background:var(--card2);border:1.5px solid var(--border);color:var(--text);font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .12s;user-select:none}
+.big-step-btn:hover{background:var(--accent);border-color:var(--accent);color:#000}
+.big-num{font-family:'Noto Sans JP',sans-serif;font-size:40px;font-weight:700;color:var(--accent);min-width:72px;text-align:center;user-select:none}
+.pchips{display:flex;flex-wrap:wrap;gap:7px}
+.pchip{background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--text2);transition:all .12s}
+.pchip:hover{border-color:var(--accent);color:var(--accent)}
+.pchip.sel{background:var(--accent);border-color:var(--accent);color:#000}
+.theme-row{display:flex;gap:10px;margin-top:4px}
+.theme-pick{flex:1;padding:12px 8px;border-radius:12px;background:var(--card2);border:2px solid var(--border);color:var(--text2);font-size:13px;font-weight:600;text-align:center;transition:all .15s}
+.theme-pick:hover{border-color:var(--accent);color:var(--accent)}
+.theme-pick.sel{border-color:var(--accent);background:var(--accent);color:#000}
+.apply-btn{width:100%;margin-top:22px;background:var(--accent);color:#000;border:none;border-radius:13px;padding:14px;font-size:14px;font-weight:700;transition:all .15s}
+.apply-btn:hover{background:var(--accent2);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- LIST -->
+<div class="screen active" id="scr-list">
+  <div class="list-topbar">
+    <div class="list-brand">
+      部首 214<span class="by">by sori</span>
+      <small>일본어 부수 학습</small>
+    </div>
+    <button class="theme-btn" id="theme-top-btn" onclick="quickTheme()">
+      <span id="theme-top-icon">☀️</span>
+      <span id="theme-top-txt">라이트</span>
+    </button>
+  </div>
+  <button class="list-all-btn" onclick="startStudy('all')">🗂 전체 214자 학습하기</button>
+  <div class="group-list" id="group-list"></div>
+</div>
+
+<!-- STUDY -->
+<div class="screen" id="scr-study">
+  <div class="study-head">
+    <div class="study-toprow">
+      <button class="back-btn" onclick="goList()">← 목록</button>
+      <div class="study-title-area">
+        <div class="study-title" id="study-title">부수 학습</div>
+        <div class="study-sub" id="study-sub"></div>
+      </div>
+      <div style="width:52px"></div>
+    </div>
+    <div class="counters">
+      <div class="ctr ok"><span class="dot"></span><span id="cnt-ok">0</span> 학습완료</div>
+      <div class="ctr ng"><span class="dot"></span><span id="cnt-ng">0</span> 다시</div>
+      <div style="flex:1"></div>
+      <div class="prog-txt" id="prog-txt">0 / 0</div>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-bar">
+        <span class="stroke-tag" id="stroke-tag">1획</span>
+        <div class="card-actions">
+          <button class="ca-btn" id="reveal-btn" onclick="toggleReveal()">👁 전체보기</button>
+          <button class="ca-btn" id="order-btn" onclick="toggleOrder()">순서대로</button>
+          <div class="auto-cluster">
+            <button class="ac-main" id="auto-main-btn" onclick="toggleAuto()">⏱ 자동</button>
+            <div class="ac-sep"></div>
+            <button class="ac-step" onclick="changeTime(-1)">−</button>
+            <span class="ac-val" id="ac-val">5초</span>
+            <button class="ac-step" onclick="changeTime(1)">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="kanji-big" id="kanji-big">一</div>
+      <div class="detail hide" id="detail">
+        <div class="reading" id="reading">하나 일</div>
+        <div class="assoc-box">
+          <div class="assoc-lbl">연상 이미지</div>
+          <div class="assoc-txt" id="assoc-txt">그냥 한 줄</div>
+        </div>
+      </div>
+      <div class="hint-area" id="hint-area">
+        <button class="hint-btn" id="hint-btn" onclick="toggleHint()">뜻 보기 👆</button>
+      </div>
+      <div class="timer-wrap" id="timer-wrap">
+        <svg class="t-svg" viewBox="0 0 38 38">
+          <circle class="t-bg" cx="19" cy="19" r="15"/>
+          <circle class="t-fg" id="t-fg" cx="19" cy="19" r="15"/>
+        </svg>
+        <div class="t-num" id="t-num">5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="abtn abtn-ng" id="btn-ng" onclick="markAgain()">
+      다시 학습<sub>모르겠어요</sub>
+    </button>
+    <button class="abtn abtn-ok" onclick="markLearned()">
+      학습 완료 ✓<sub>알고있어요</sub>
+    </button>
+  </div>
+  <div class="round-row">라운드 <span class="round-tag" id="round-tag">1</span></div>
+</div>
+
+<!-- COMPLETE -->
+<div class="done-screen" id="scr-done">
+  <div class="done-emoji">🎉</div>
+  <div class="done-title">모두 완료!</div>
+  <div class="done-sub" id="done-sub"></div>
+  <button class="dbtn s" onclick="goList()">← 목록으로</button>
+  <button class="dbtn s" onclick="restartCurrent()">처음부터 다시</button>
+</div>
+
+<!-- SETTINGS -->
+<div class="overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="sheet">
+    <div class="sheet-title">⚙️ 설정<button class="sheet-close" onclick="closeSettings()">✕</button></div>
+    <div class="srow">
+      <div class="srow-label">자동 넘김 시간</div>
+      <div class="srow-desc">'외웠음'을 누르지 않으면 이 시간 후 다시 학습으로 넘어갑니다</div>
+      <div class="big-stepper">
+        <button class="big-step-btn" onclick="pStep(-1)">−</button>
+        <div class="big-num" id="big-num">5초</div>
+        <button class="big-step-btn" onclick="pStep(1)">+</button>
+      </div>
+      <div class="pchips" id="pchips">
+        <button class="pchip" onclick="pPreset(2)">2초</button>
+        <button class="pchip sel" onclick="pPreset(5)">5초</button>
+        <button class="pchip" onclick="pPreset(7)">7초</button>
+        <button class="pchip" onclick="pPreset(10)">10초</button>
+        <button class="pchip" onclick="pPreset(15)">15초</button>
+        <button class="pchip" onclick="pPreset(20)">20초</button>
+        <button class="pchip" onclick="pPreset(30)">30초</button>
+      </div>
+    </div>
+    <div class="srow">
+      <div class="srow-label">테마</div>
+      <div class="theme-row">
+        <button class="theme-pick sel" id="tp-dark" onclick="pThemeFn('dark')">🌙 다크모드</button>
+        <button class="theme-pick" id="tp-light" onclick="pThemeFn('light')">☀️ 라이트모드</button>
+      </div>
+    </div>
+    <button class="apply-btn" onclick="applySettings()">적용하기</button>
+  </div>
+</div>
+
+<script>
+const R = [
+  {n:1,k:"一",r:"하나 일",s:"1획",a:"그냥 한 줄"},
+  {n:2,k:"丨",r:"뚫을 곤",s:"1획",a:"세워진 막대"},
+  {n:3,k:"丶",r:"점 주",s:"1획",a:"물방울 하나"},
+  {n:4,k:"丿",r:"삐침 별",s:"1획",a:"칼로 긋는 느낌"},
+  {n:5,k:"乙",r:"새 을",s:"1획",a:"구부러진 갈고리"},
+  {n:6,k:"亅",r:"갈고리 궐",s:"1획",a:"낚싯바늘"},
+  {n:7,k:"二",r:"두 이",s:"2획",a:"선 두 개"},
+  {n:8,k:"亠",r:"머리 두",s:"2획",a:"뚜껑 모양"},
+  {n:9,k:"人",r:"사람 인",s:"2획",a:"서있는 사람 (亻사람 인 변)"},
+  {n:10,k:"儿",r:"어진사람 인 발",s:"2획",a:"걷는 다리"},
+  {n:11,k:"入",r:"들 입",s:"2획",a:"안으로 쏙"},
+  {n:12,k:"八",r:"여덟 팔",s:"2획",a:"나눔/벌어진 모양"},
+  {n:13,k:"冂",r:"멀 경",s:"2획",a:"박스 틀 모양"},
+  {n:14,k:"冖",r:"덮개 명",s:"2획",a:"위에서 덮는 모양"},
+  {n:15,k:"冫",r:"이수 변",s:"2획",a:"얼음 결정 (氷물 빙의 변형)"},
+  {n:16,k:"几",r:"안석 궤",s:"2획",a:"책상 혹은 다리 있는 구조"},
+  {n:17,k:"凵",r:"입구 몸",s:"2획",a:"그릇 혹은 아래 열린 통"},
+  {n:18,k:"刀",r:"칼 도",s:"2획",a:"자르는 도구 (刂칼 도 방)"},
+  {n:19,k:"力",r:"힘 력",s:"2획",a:"근육 혹은 쟁기의 모양"},
+  {n:20,k:"勹",r:"쌀 포",s:"2획",a:"감싸는 팔"},
+  {n:21,k:"匕",r:"비수 비",s:"2획",a:"숟가락 혹은 떠먹는 모양"},
+  {n:22,k:"匚",r:"터진입구 몸",s:"2획",a:"열려있는 박스"},
+  {n:23,k:"匸",r:"감출 혜",s:"2획",a:"숨김/감춰진 상자"},
+  {n:24,k:"十",r:"열 십",s:"2획",a:"십자가 (동서남북의 중앙)"},
+  {n:25,k:"卜",r:"점 복",s:"2획",a:"점치는 막대 (卜점 복+占점칠 점 상단)"},
+  {n:26,k:"卩",r:"병부 절",s:"2획",a:"무릎 꿇은 모양 (⺋자형과 혼용)"},
+  {n:27,k:"厂",r:"민엄호",s:"3획",a:"깎아지른 절벽 (굴바위 엄)"},
+  {n:28,k:"厶",r:"사사 사",s:"3획",a:"팔을 안으로 굽힌 모양 (사사롭다)"},
+  {n:29,k:"又",r:"또 우",s:"3획",a:"오른손으로 또 잡다"},
+  {n:30,k:"口",r:"입 구",s:"3획",a:"벌린 입 모양"},
+  {n:31,k:"囗",r:"에운담 몸",s:"3획",a:"사방을 둘러싼 담장"},
+  {n:32,k:"土",r:"흙 토",s:"3획",a:"땅 위에 솟아난 새싹"},
+  {n:33,k:"士",r:"선비 사",s:"3획",a:"어깨가 넓은 당당한 사람 (一하나 일+十열 십)"},
+  {n:34,k:"夂",r:"뒤져올 치",s:"3획",a:"발을 내딛으며 천천히 걷다"},
+  {n:35,k:"夊",r:"천천히걸을 쇠",s:"3획",a:"발을 끌며 걷는 모양"},
+  {n:36,k:"夕",r:"저녁 석",s:"3획",a:"초승달이 뜬 모양"},
+  {n:37,k:"大",r:"큰 대",s:"3획",a:"사람이 팔다리를 크게 벌린 모습"},
+  {n:38,k:"女",r:"여자 녀",s:"3획",a:"무릎 꿇고 손을 모은 모습"},
+  {n:39,k:"子",r:"아들 자",s:"3획",a:"포대기에 싸인 아기"},
+  {n:40,k:"宀",r:"집 면",s:"3획",a:"지붕과 굴뚝이 있는 집"},
+  {n:41,k:"寸",r:"마디 촌",s:"3획",a:"손목에서 맥박이 뛰는 거리 (又또 우+丶점 주)"},
+  {n:42,k:"小",r:"작을 소",s:"3획",a:"작은 파편이 튀는 모양"},
+  {n:43,k:"尢",r:"절름발이 왕",s:"3획",a:"한쪽 다리가 굽은 모양"},
+  {n:44,k:"尸",r:"주검 시",s:"3획",a:"굽히고 누워있는 몸 (지붕이나 몸의 모양)"},
+  {n:45,k:"屮",r:"풀싹 철",s:"3획",a:"땅 위로 갓 돋아난 풀 (艸풀 초의 절반)"},
+  {n:46,k:"山",r:"메 산",s:"3획",a:"봉우리 세 개가 솟은 모양"},
+  {n:47,k:"巛",r:"개울 천",s:"3획",a:"굽이쳐 흐르는 물줄기 (川내 천)"},
+  {n:48,k:"工",r:"장인 공",s:"3획",a:"장인의 도구 (곱자 혹은 절구 공이)"},
+  {n:49,k:"己",r:"몸 기",s:"3획",a:"구불구불한 끈/몸의 곡선"},
+  {n:50,k:"巾",r:"수건 건",s:"3획",a:"막대기에 걸어놓은 천"},
+  {n:51,k:"干",r:"방패 간",s:"3획",a:"막대기 끝이 갈라진 무기"},
+  {n:52,k:"幺",r:"작을 요",s:"3획",a:"어린 실타래 (糸실 사의 절반)"},
+  {n:53,k:"广",r:"집 엄",s:"3획",a:"절벽 위에 지붕이 있는 큰 집 (厂민엄호+丶점 주)"},
+  {n:54,k:"廴",r:"길게걸을 인",s:"3획",a:"발을 길게 뻗으며 나아감 (彳조금걸을 척+止그칠 지)"},
+  {n:55,k:"廾",r:"받들 공",s:"3획",a:"두 손으로 물건을 들어 올림"},
+  {n:56,k:"弋",r:"주살 익",s:"3획",a:"줄이 달린 화살"},
+  {n:57,k:"弓",r:"활 궁",s:"3획",a:"팽팽하게 휘어진 활의 몸체"},
+  {n:58,k:"彐",r:"돼지머리 계",s:"3획",a:"동물의 머리 모양 (튼 손)"},
+  {n:59,k:"彡",r:"터럭 삼",s:"3획",a:"길게 자란 머리카락이나 장식"},
+  {n:60,k:"彳",r:"조금걸을 척",s:"3획",a:"길 위를 걷는 왼쪽 발자국"},
+  {n:61,k:"心",r:"마음 심",s:"4획",a:"심장 모양 (忄마음 심 변, ⺗심장 모양)"},
+  {n:62,k:"戈",r:"창 과",s:"4획",a:"긴 자루가 달린 날카로운 무기"},
+  {n:63,k:"戸",r:"집 호",s:"4획",a:"외짝 문 (戶의 신자체)"},
+  {n:64,k:"手",r:"손 수",s:"4획",a:"다섯 손가락을 편 모양 (扌손 수 변)"},
+  {n:65,k:"支",r:"지탱할 지",s:"4획",a:"대나무 가지를 손에 잡음 (十열 십+又또 우)"},
+  {n:66,k:"攴",r:"칠 복",s:"4획",a:"손에 회초리를 들고 치다 (攵칠 복 변형)"},
+  {n:67,k:"文",r:"글월 문",s:"4획",a:"몸에 새긴 문신 모양"},
+  {n:68,k:"斗",r:"말 두",s:"4획",a:"국자 모양의 계량 도구"},
+  {n:69,k:"斤",r:"도끼 근",s:"4획",a:"나무를 찍는 도끼"},
+  {n:70,k:"方",r:"모 방",s:"4획",a:"쟁기 혹은 깃발이 나부끼는 모양"},
+  {n:71,k:"日",r:"날 일",s:"4획",a:"둥근 해 모양"},
+  {n:72,k:"曰",r:"가로되 왈",s:"4획",a:"입에서 말이 나오는 모양"},
+  {n:73,k:"月",r:"달 월",s:"4획",a:"초승달 모양 (⺼고기 육 변과 혼용)"},
+  {n:74,k:"木",r:"나무 목",s:"4획",a:"뿌리와 가지가 있는 나무"},
+  {n:75,k:"欠",r:"하품 흠",s:"4획",a:"입을 벌리고 하품하는 사람"},
+  {n:76,k:"止",r:"그칠 지",s:"4획",a:"발자국 모양 (멈춰 서다)"},
+  {n:77,k:"歹",r:"죽을사변",s:"4획",a:"부서진 뼈 조각 (앙상한 뼈 알)"},
+  {n:78,k:"殳",r:"갖은등글월문",s:"4획",a:"손에 몽둥이를 든 모양 (殺죽일 살의 오른쪽)"},
+  {n:79,k:"毋",r:"말 무",s:"4획",a:"여자의 몸에 금지선을 그음 (母어머니 모의 변형)"},
+  {n:80,k:"比",r:"견줄 비",s:"4획",a:"두 사람이 나란히 선 모양 (人사람 인+人사람 인)"},
+  {n:81,k:"毛",r:"털 모",s:"4획",a:"짐승의 부드러운 털 (꼬리 모양)"},
+  {n:82,k:"氏",r:"성씨 씨",s:"4획",a:"땅속으로 내린 뿌리 혹은 칼의 모양"},
+  {n:83,k:"气",r:"기운 기",s:"4획",a:"흐르는 공기나 구름"},
+  {n:84,k:"水",r:"물 수",s:"4획",a:"흐르는 물줄기 (氵삼수 변, 氺물 수)"},
+  {n:85,k:"火",r:"불 화",s:"4획",a:"타오르는 불길 (灬불 화 발)"},
+  {n:86,k:"爪",r:"손톱 조",s:"4획",a:"움켜쥐는 손 (爫손톱 조 머리)"},
+  {n:87,k:"父",r:"아버지 부",s:"4획",a:"손에 회초리를 든 아버지 (八여덟 팔+乂베일 예)"},
+  {n:88,k:"爻",r:"점괘 효",s:"4획",a:"산가지가 엇갈린 모양"},
+  {n:89,k:"爿",r:"조각널 상",s:"4획",a:"나무를 쪼갠 왼쪽 (신자체: 壮의 왼쪽)"},
+  {n:90,k:"片",r:"조각 편",s:"4획",a:"나무를 쪼갠 오른쪽 모양"},
+  {n:91,k:"牙",r:"어금니 아",s:"4획",a:"어금니가 맞물린 모양"},
+  {n:92,k:"牛",r:"소 우",s:"4획",a:"소의 머리와 뿔 모양 (牜소 우 변)"},
+  {n:93,k:"犬",r:"개 견",s:"4획",a:"개가 서 있는 모양 (犭개 견 변)"},
+  {n:94,k:"玄",r:"검을 현",s:"5획",a:"가물거리는 실 끝 (亠머리 두+幺작을 요)"},
+  {n:95,k:"玉",r:"구슬 옥",s:"5획",a:"끈에 꿰인 구슬 (王임금 왕/구슬 옥 변)"},
+  {n:96,k:"瓜",r:"오이 과",s:"5획",a:"덩굴에 매달린 오이 혹은 열매 모양"},
+  {n:97,k:"瓦",r:"기와 와",s:"5획",a:"흙을 구워 만든 기와"},
+  {n:98,k:"甘",r:"달 감",s:"5획",a:"입안에 음식을 머금은 맛"},
+  {n:99,k:"生",r:"날 생",s:"5획",a:"땅 위로 돋아난 풀 혹은 새싹 모양"},
+  {n:100,k:"用",r:"쓸 용",s:"5획",a:"종이나 도구의 모양 (거푸집)"},
+  {n:101,k:"田",r:"밭 전",s:"5획",a:"구획된 논밭 모양"},
+  {n:102,k:"疋",r:"발 소",s:"5획",a:"발바닥과 다리 모양 (필 필)"},
+  {n:103,k:"疒",r:"병들녁 엄",s:"5획",a:"침대에 누운 사람 모양 (广집 엄+爿조각 널 상)"},
+  {n:104,k:"癶",r:"필발머리",s:"5획",a:"양발을 벌리고 나아감"},
+  {n:105,k:"白",r:"흰 백",s:"5획",a:"촛불 혹은 해가 뜨는 모양 (엄지손가락 모양)"},
+  {n:106,k:"皮",r:"가죽 피",s:"5획",a:"손으로 짐승 가죽을 벗김 (또 우+가죽 모양)"},
+  {n:107,k:"皿",r:"그릇 명",s:"5획",a:"평평한 접시나 그릇"},
+  {n:108,k:"目",r:"눈 목",s:"5획",a:"눈동자가 있는 눈 모양"},
+  {n:109,k:"矛",r:"창 모",s:"5획",a:"세모진 날이 달린 창 모양"},
+  {n:110,k:"矢",r:"화살 시",s:"5획",a:"촉과 깃이 달린 화살"},
+  {n:111,k:"石",r:"돌 석",s:"5획",a:"언덕 아래 떨어진 돌 (厂민엄호+口입 구)"},
+  {n:112,k:"示",r:"보일 시",s:"5획",a:"제사 지내는 제단 (礻보일 시 변)"},
+  {n:113,k:"禸",r:"짐승발자국 유",s:"5획",a:"짐승의 뒷발 모양"},
+  {n:114,k:"禾",r:"벼 화",s:"5획",a:"이삭이 고개를 숙인 벼 (木나무 목+丿삐침)"},
+  {n:115,k:"穴",r:"구멍 혈",s:"5획",a:"동굴이나 집의 입구 (宀집 면+八여덟 팔)"},
+  {n:116,k:"立",r:"설 립",s:"5획",a:"사람이 땅 위에 서 있는 모습"},
+  {n:117,k:"竹",r:"대 죽",s:"6획",a:"대나무 잎이 늘어진 모양 (⺮대 죽 머리)"},
+  {n:118,k:"米",r:"쌀 미",s:"6획",a:"사방으로 흩어진 쌀알"},
+  {n:119,k:"糸",r:"실 사",s:"6획",a:"실타래 모양"},
+  {n:120,k:"缶",r:"장군 부",s:"6획",a:"입구가 좁은 질그릇 모양"},
+  {n:121,k:"网",r:"그물 망",s:"6획",a:"물고기 잡는 그물 (罒그물 망 머리)"},
+  {n:122,k:"羊",r:"양 양",s:"6획",a:"양의 머리와 뿔 모양 (⺷양 양 머리)"},
+  {n:123,k:"羽",r:"깃 우",s:"6획",a:"새의 날개 깃털 모양"},
+  {n:124,k:"老",r:"늙을 로",s:"6획",a:"지팡이를 짚은 노인 (耂늙을 로 엄)"},
+  {n:125,k:"而",r:"말 이을 이",s:"6획",a:"턱수염 모양"},
+  {n:126,k:"耒",r:"쟁기 뢰",s:"6획",a:"나무로 만든 농기구 (三석 삼+木나무 목)"},
+  {n:127,k:"耳",r:"귀 이",s:"6획",a:"사람의 귀 모양"},
+  {n:128,k:"聿",r:"붓 율",s:"6획",a:"손에 붓을 잡은 모양 (聿붓 율+분필 모양)"},
+  {n:129,k:"肉",r:"고기 육",s:"6획",a:"잘라 놓은 고기 덩어리 (⺼육달월 변)"},
+  {n:130,k:"臣",r:"신하 신",s:"6획",a:"엎드려 내려다보는 신하의 눈"},
+  {n:131,k:"自",r:"스스로 자",s:"6획",a:"사람의 코 모양"},
+  {n:132,k:"至",r:"이를 지",s:"6획",a:"화살이 땅에 꽂힌 모양 (一하나 일+厶사사로울 사+土흙 토)"},
+  {n:133,k:"臼",r:"절구 구",s:"6획",a:"움푹 팬 절구통"},
+  {n:134,k:"舌",r:"혀 설",s:"6획",a:"입 밖으로 나온 혀 (千일천 천+口입 구)"},
+  {n:135,k:"舛",r:"어그러질 천",s:"6획",a:"양발이 서로 반대 방향 (夕저녁 석+어그러질 천)"},
+  {n:136,k:"舟",r:"배 주",s:"6획",a:"통나무 배의 모양"},
+  {n:137,k:"艮",r:"그칠 간",s:"6획",a:"뒤돌아보는 눈 (目눈 목의 변형)"},
+  {n:138,k:"色",r:"빛 색",s:"6획",a:"얼굴의 감정적 색채 (勹쌀 포+巴꼬리 파)"},
+  {n:139,k:"艸",r:"풀 초",s:"6획",a:"돋아난 풀의 싹 (艹풀 초 머리)"},
+  {n:140,k:"虍",r:"범 호 엄",s:"6획",a:"호랑이 무늬와 몸 (卜점 복+厂민엄호+七일곱 칠)"},
+  {n:141,k:"虫",r:"벌레 충",s:"6획",a:"꿈틀거리는 벌레"},
+  {n:142,k:"血",r:"피 혈",s:"6획",a:"그릇에 담긴 피 (丿삐침+皿그릇 명)"},
+  {n:143,k:"行",r:"갈 행",s:"6획",a:"사거리 길 모양 (彳조금 걸을 척+亍머뭇거릴 촉)"},
+  {n:144,k:"衣",r:"옷 의",s:"6획",a:"사람이 입는 겉옷 (衤옷 의 변)"},
+  {n:145,k:"襾",r:"덮을 아",s:"6획",a:"덮개 모양 (西서녘 서와 유사)"},
+  {n:146,k:"見",r:"볼 견",s:"7획",a:"눈을 강조한 사람 (目눈 목+儿어진사람 인 발)"},
+  {n:147,k:"角",r:"뿔 각",s:"7획",a:"짐승의 뿔 모양 (삐침+용쓸 용)"},
+  {n:148,k:"言",r:"말씀 언",s:"7획",a:"입에서 나오는 소리 (訁말씀 언 변)"},
+  {n:149,k:"谷",r:"골짜기 곡",s:"7획",a:"산 사이 물이 나오는 입구 (八여덟 팔+口입 구)"},
+  {n:150,k:"豆",r:"콩 두",s:"7획",a:"뚜껑 있는 제사 그릇 (一하나 일+口입 구+제사그릇 모양)"},
+  {n:151,k:"豕",r:"돼지 시",s:"7획",a:"돼지의 주둥이와 발, 꼬리 모양"},
+  {n:152,k:"豸",r:"벌레/해태 치",s:"7획",a:"발 없는 벌레 혹은 맹수"},
+  {n:153,k:"貝",r:"조개 패",s:"7획",a:"조개 모양(화폐) (目눈 목+八여덟 팔)"},
+  {n:154,k:"赤",r:"붉을 적",s:"7획",a:"불 위에 큰 빛 (土흙 토+火불 화)"},
+  {n:155,k:"走",r:"달릴 주",s:"7획",a:"달리는 사람 (土흙 토+止그칠 지)"},
+  {n:156,k:"足",r:"발 족",s:"7획",a:"무릎 아래 발 모양 (口입 구+止그칠 지)"},
+  {n:157,k:"身",r:"몸 신",s:"7획",a:"아이를 밴 여자의 몸"},
+  {n:158,k:"車",r:"수레 차",s:"7획",a:"위에서 본 수레 바퀴와 축 모양"},
+  {n:159,k:"辛",r:"매울 신",s:"7획",a:"문신 새기던 칼 (立설 립+十열 십)"},
+  {n:160,k:"辰",r:"별/때 신",s:"7획",a:"조개 혹은 농기구 모양 (厂민엄호+二둘 이+갈고리)"},
+  {n:161,k:"辵",r:"갈 착",s:"7획",a:"길 위를 가는 발 (辶책받침 변)"},
+  {n:162,k:"邑",r:"고을 읍",s:"7획",a:"사람이 사는 마을 (⻏고을 읍 방) (口입 구+巴꼬리 파)"},
+  {n:163,k:"酉",r:"닭/술 유",s:"7획",a:"술 익는 항아리 모양 (닭 유)"},
+  {n:164,k:"釆",r:"분별할 변",s:"7획",a:"짐승의 발자국 모양 (丿삐침+米쌀 미)"},
+  {n:165,k:"里",r:"마을 리",s:"7획",a:"밭과 땅이 있는 곳 (田밭 전+土흙 토)"},
+  {n:166,k:"金",r:"쇠 금",s:"8획",a:"땅속의 광물 (人사람 인+土흙 토+丷점 주)"},
+  {n:167,k:"長",r:"길 장",s:"8획",a:"노인의 긴 머리카락"},
+  {n:168,k:"門",r:"문 문",s:"8획",a:"두 짝의 대문 모양"},
+  {n:169,k:"阜",r:"언덕 부",s:"8획",a:"흙 계단 모양 (⻖언덕 부 변)"},
+  {n:170,k:"隶",r:"미칠 이",s:"8획",a:"짐승을 쫓아 잡음 (聿붓 율+氺물 수)"},
+  {n:171,k:"隹",r:"새 추",s:"8획",a:"꽁지가 짧은 새 (亻사람 인 변+主임금 주)"},
+  {n:172,k:"雨",r:"비 우",s:"8획",a:"하늘에서 내리는 비 (一하나 일+冂멀 경+氺물 수)"},
+  {n:173,k:"青",r:"푸를 청",s:"8획",a:"우물의 맑은 색 (靑의 신자체)"},
+  {n:174,k:"非",r:"아닐 비",s:"8획",a:"새 날개가 서로 등진 모양"},
+  {n:175,k:"斉",r:"가지런할 제",s:"8획",a:"고르게 핀 이삭 (齊의 신자체)"},
+  {n:176,k:"面",r:"낯 면",s:"9획",a:"사람의 얼굴 모양 (一하나 일+머리 혈)"},
+  {n:177,k:"革",r:"가죽 혁",s:"9획",a:"털을 벗겨낸 가죽 (廿스물 입+中가운데 중+十열 십)"},
+  {n:178,k:"韋",r:"가죽 위",s:"9획",a:"무두질한 가죽 (口입 구+舛어그러질 천)"},
+  {n:179,k:"韭",r:"부추 구",s:"9획",a:"땅에서 자라는 부추"},
+  {n:180,k:"音",r:"소리 음",s:"9획",a:"입속의 울림 (立설 립+日날 일)"},
+  {n:181,k:"頁",r:"머리 혈",s:"9획",a:"사람의 얼굴과 머리 (一하나 일+自스스로 자+八여덟 팔)"},
+  {n:182,k:"風",r:"바람 풍",s:"9획",a:"돛에 바람이 부는 모양 (凡무릇 범+虫벌레 충)"},
+  {n:183,k:"飛",r:"날 비",s:"9획",a:"새가 날개를 펴고 나는 모양"},
+  {n:184,k:"食",r:"밥 식",s:"9획",a:"뚜껑 덮인 밥그릇 (飠먹을 식 변) (人사람 인+良어질 량)"},
+  {n:185,k:"首",r:"머리 수",s:"9획",a:"사람의 머리 모양 (丷점 주+一하나 일+自스스로 자)"},
+  {n:186,k:"香",r:"향기 향",s:"9획",a:"벼에서 나는 고소한 냄새 (禾벼 화+日날 일)"},
+  {n:187,k:"馬",r:"말 마",s:"10획",a:"갈기와 발이 있는 말 모양"},
+  {n:188,k:"骨",r:"뼈 골",s:"10획",a:"살을 발라낸 뼈 모양 (뼈 골 머리+肉고기 육)"},
+  {n:189,k:"高",r:"높을 고",s:"10획",a:"높은 성곽 모양 (亠머리 두+口입 구+冂멀 경+口입 구)"},
+  {n:190,k:"髟",r:"터럭 발",s:"10획",a:"늘어진 머리카락 (長길 장+彡터럭 삼)"},
+  {n:191,k:"鬥",r:"싸울 투",s:"10획",a:"두 사람이 싸우는 모양 (門문 문 변형)"},
+  {n:192,k:"鬯",r:"울창주 창",s:"10획",a:"제사 술 (凵그릇 명+왼손 자+米쌀 미+匕숟가락 비)"},
+  {n:193,k:"鬲",r:"솥 력",s:"10획",a:"다리가 셋 달린 솥 (一하나 일+口입 구+冂멀 경+丅아래 하)"},
+  {n:194,k:"鬼",r:"귀신 귀",s:"10획",a:"머리가 큰 유령 (田밭 전+儿다리 리+厶사사로울 사)"},
+  {n:195,k:"竜",r:"용 용",s:"10획",a:"상상의 동물 용 모양 (龍의 신자체)"},
+  {n:196,k:"魚",r:"물고기 어",s:"11획",a:"비늘과 지느러미 (삐침+田밭 전+灬불 화 발)"},
+  {n:197,k:"鳥",r:"새 조",s:"11획",a:"꽁지가 긴 새 (白흰 백+삐침+灬불 화 발)"},
+  {n:198,k:"鹵",r:"소금 로",s:"11획",a:"소금기가 있는 땅 (占점칠 점+비녀 모양)"},
+  {n:199,k:"鹿",r:"사슴 록",s:"11획",a:"뿔이 돋은 사슴 (广집 엄+比견줄 비+米쌀 미)"},
+  {n:200,k:"麥",r:"보리 맥",s:"11획",a:"보리의 이삭과 뿌리 (來올 래+夂뒤져올 치)"},
+  {n:201,k:"麻",r:"삼 마",s:"11획",a:"집안에 걸어둔 삼 줄기 (广집 엄+林수풀 림)"},
+  {n:202,k:"亀",r:"거북 귀",s:"11획",a:"거북 등껍질과 발 모양 (龜의 신자체)"},
+  {n:203,k:"黄",r:"누를 황",s:"11획",a:"누런 빛 (黃의 신자체)"},
+  {n:204,k:"黒",r:"검을 흑",s:"11획",a:"아궁이에서 그을린 연기 (黑의 신자체)"},
+  {n:205,k:"無",r:"없을 무",s:"12획+",a:"사람이 춤추며 사라지는 모양 (하단 灬불 화 발)"},
+  {n:206,k:"黍",r:"기장 서",s:"12획+",a:"끈적이는 곡식 (禾벼 화+入들 입+水물 수)"},
+  {n:207,k:"黹",r:"바느질 치",s:"12획+",a:"수놓은 무늬 모양 (业업 업+비녀 모양)"},
+  {n:208,k:"黽",r:"맹꽁이 맹",s:"12획+",a:"꼬리 짧은 개구리 (口입 구+田밭 전+乚숨을 은)"},
+  {n:209,k:"鼎",r:"솥 정",s:"12획+",a:"다리가 셋 달린 큰 솥 (目눈 목+爿조각 널 상+片조각 편)"},
+  {n:210,k:"鼓",r:"북 고",s:"12획+",a:"손에 채를 들고 북을 침 (壴악기 이름 주+支지탱할 지)"},
+  {n:211,k:"鼠",r:"쥐 서",s:"12획+",a:"이빨과 발이 있는 쥐 (臼절구 구+삐침+灬불 화 발)"},
+  {n:212,k:"鼻",r:"코 비",s:"12획+",a:"숨 쉬는 코 모양 (自스스로 자+田밭 전+丌책상 기)"},
+  {n:213,k:"歯",r:"이 치",s:"12획+",a:"입안의 이빨 모양 (齒의 신자체)"},
+  {n:214,k:"龠",r:"피리 약",s:"12획+",a:"구멍이 여러 개인 악기 (亼모일 집+品물건 품+구멍 모양)"},
+];
+
+const GRP={}, SO=[];
+R.forEach(r=>{if(!GRP[r.s]){GRP[r.s]=[];SO.push(r.s)}GRP[r.s].push(r)});
+
+const doneCounts={};
+let deck=[],againList=[];
+let curIdx=0,okCnt=0,ngCnt=0,totalLearned=0;
+let showDetail=false,hintShown=false,round=1;
+let curMode='all';
+let isRandom=false;
+let autoOn=false,autoTimer=null,autoSecs=5;
+let AUTO_TIME=5;
+const CIRC=94.25;
+let theme='dark',pThemeVal='dark',pTimeVal=5;
+
+function applyTheme(t){
+  theme=t;
+  document.body.classList.toggle('light',t==='light');
+  document.getElementById('theme-top-icon').textContent=t==='light'?'🌙':'☀️';
+  document.getElementById('theme-top-txt').textContent=t==='light'?'다크':'라이트';
+  syncTPs(t);
+}
+function quickTheme(){applyTheme(theme==='dark'?'light':'dark')}
+function syncTPs(t){
+  const td=document.getElementById('tp-dark'),tl=document.getElementById('tp-light');
+  if(td){td.classList.toggle('sel',t==='dark');tl.classList.toggle('sel',t==='light')}
+}
+
+function buildList(){
+  const c=document.getElementById('group-list');c.innerHTML='';
+  SO.forEach(s=>{
+    const items=GRP[s],done=doneCounts[s]||0;
+    const d=document.createElement('div');d.className='sg';
+    d.innerHTML=`
+      <div class="sg-head">
+        <span class="sg-title">${s} <span style="color:var(--text3);font-size:12px;font-weight:400">(${items.length}자)</span></span>
+        <div class="sg-right">
+          ${done>0?`<span class="done-badge">완료 ${done}회</span>`:''}
+          <button class="sg-btn" onclick="startStudy('${s}')">학습 →</button>
+        </div>
+      </div>
+      <div class="chips">${items.map(it=>`<div class="chip"><span class="chip-k">${it.k}</span><span class="chip-r">${it.r}</span></div>`).join('')}</div>`;
+    c.appendChild(d);
+  });
+}
+
+function goList(){
+  stopAuto();
+  document.getElementById('scr-done').classList.remove('show');
+  document.getElementById('scr-study').classList.remove('active');
+  document.getElementById('scr-list').classList.add('active');
+  buildList();
+  syncOrderBtn();
+}
+
+function startStudy(mode){
+  curMode=mode;
+  const src=mode==='all'?R:GRP[mode];
+  deck=isRandom?shuffle([...src]):[...src];
+  againList=[];curIdx=0;okCnt=0;ngCnt=0;totalLearned=0;
+  showDetail=false;hintShown=false;round=1;
+  stopAuto();
+  document.getElementById('study-title').textContent=mode==='all'?'部首 214자 전체':mode+' 부수';
+  document.getElementById('study-sub').textContent='총 '+deck.length+'자';
+  document.getElementById('scr-list').classList.remove('active');
+  document.getElementById('scr-done').classList.remove('show');
+  document.getElementById('scr-study').classList.add('active');
+  syncOrderBtn();
+  updateCounters();renderCard();
+}
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=0|Math.random()*(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function syncOrderBtn(){
+  const btn=document.getElementById('order-btn');
+  if(btn){btn.textContent=isRandom?'🔀 랜덤':'순서대로';btn.classList.toggle('on',isRandom)}
+}
+
+function toggleOrder(){
+  isRandom=!isRandom;
+  syncOrderBtn();
+  if(document.getElementById('scr-study').classList.contains('active')&&deck.length>0){
+    const remaining=deck.slice(curIdx);
+    const reordered=isRandom?shuffle(remaining):[...remaining].sort((a,b)=>a.n-b.n);
+    deck=[...deck.slice(0,curIdx),...reordered];
+  }
+}
+
+function renderCard(){
+  if(curIdx>=deck.length){
+    if(againList.length>0){startAgainRound();return}
+    else{showDone();return}
+  }
+  const it=deck[curIdx];
+  document.getElementById('kanji-big').textContent=it.k;
+  document.getElementById('stroke-tag').textContent=it.s;
+  document.getElementById('reading').textContent=it.r;
+  document.getElementById('assoc-txt').textContent=it.a;
+  hintShown=false;
+  document.getElementById('hint-btn').textContent='뜻 보기 👆';
+  applyReveal();updateProg();
+  if(autoOn)startTimer();
+}
+
+function applyReveal(){
+  const det=document.getElementById('detail'),ha=document.getElementById('hint-area'),rb=document.getElementById('reveal-btn');
+  if(showDetail){det.classList.remove('hide');ha.style.display='none';rb.classList.add('on');rb.textContent='👁 가리기'}
+  else{det.classList.add('hide');ha.style.display='block';rb.classList.remove('on');rb.textContent='👁 전체보기'}
+}
+function toggleReveal(){showDetail=!showDetail;applyReveal()}
+function toggleHint(){
+  const det=document.getElementById('detail'),btn=document.getElementById('hint-btn');
+  if(!hintShown){det.classList.remove('hide');btn.textContent='뜻 숨기기 👆';hintShown=true}
+  else{det.classList.add('hide');btn.textContent='뜻 보기 👆';hintShown=false}
+}
+
+function markLearned(){stopTimer();okCnt++;totalLearned++;curIdx++;updateCounters();renderCard()}
+function markAgain(){stopTimer();againList.push(deck[curIdx]);ngCnt++;curIdx++;updateCounters();renderCard()}
+
+function updateCounters(){
+  document.getElementById('cnt-ok').textContent=okCnt;
+  document.getElementById('cnt-ng').textContent=ngCnt;
+  document.getElementById('round-tag').textContent=round;
+}
+function updateProg(){
+  const pct=deck.length>0?(totalLearned/deck.length)*100:0;
+  document.getElementById('prog-fill').style.width=Math.min(100,pct)+'%';
+  document.getElementById('prog-txt').textContent=totalLearned+' / '+deck.length;
+}
+
+function toggleAuto(){
+  autoOn=!autoOn;
+  const btn=document.getElementById('auto-main-btn'),wrap=document.getElementById('timer-wrap');
+  if(autoOn){btn.classList.add('on');btn.textContent='⏱ ON';wrap.classList.add('show');startTimer()}
+  else{btn.classList.remove('on');btn.textContent='⏱ 자동';wrap.classList.remove('show');stopTimer()}
+}
+function stopAuto(){
+  autoOn=false;stopTimer();
+  const b=document.getElementById('auto-main-btn');if(b){b.classList.remove('on');b.textContent='⏱ 자동'}
+  const w=document.getElementById('timer-wrap');if(w)w.classList.remove('show');
+}
+function startTimer(){
+  stopTimer();autoSecs=AUTO_TIME;updateRing(AUTO_TIME);
+  autoTimer=setInterval(()=>{
+    autoSecs-=0.1;updateRing(autoSecs);
+    if(autoSecs<=0){
+      stopTimer();
+      const b=document.getElementById('btn-ng');b.classList.add('flash');
+      setTimeout(()=>{b.classList.remove('flash');markAgain()},280);
+    }
+  },100);
+}
+function stopTimer(){if(autoTimer){clearInterval(autoTimer);autoTimer=null}}
+function updateRing(s){
+  const v=Math.max(0,s);
+  document.getElementById('t-fg').style.strokeDashoffset=CIRC*(1-v/AUTO_TIME);
+  document.getElementById('t-num').textContent=Math.ceil(v);
+}
+function changeTime(d){
+  AUTO_TIME=Math.min(60,Math.max(1,AUTO_TIME+d));
+  document.getElementById('ac-val').textContent=AUTO_TIME+'초';
+  if(autoOn)startTimer();
+}
+
+function startAgainRound(){
+  round++;
+  deck=isRandom?shuffle([...againList]):[...againList];
+  againList=[];curIdx=0;ngCnt=0;hintShown=false;
+  document.getElementById('scr-done').classList.remove('show');
+  document.getElementById('scr-study').classList.add('active');
+  updateCounters();renderCard();
+  if(autoOn)startTimer();
+}
+
+function showDone(){
+  stopAuto();
+  document.getElementById('scr-study').classList.remove('active');
+  const ds=document.getElementById('scr-done');ds.classList.add('show');
+  document.getElementById('done-sub').innerHTML=`총 ${round} 라운드 완료!<br>✅ 최종 외운 것: <strong style="color:var(--green)">${okCnt}개</strong>`;
+  if(curMode==='all')SO.forEach(s=>{doneCounts[s]=(doneCounts[s]||0)+1});
+  else doneCounts[curMode]=(doneCounts[curMode]||0)+1;
+}
+function restartCurrent(){goList();setTimeout(()=>startStudy(curMode),30)}
+
+function openSettings(){
+  pTimeVal=AUTO_TIME;pThemeVal=theme;
+  document.getElementById('big-num').textContent=pTimeVal+'초';
+  syncPchips(pTimeVal);syncTPs(pThemeVal);
+  document.getElementById('overlay').classList.add('show');
+}
+function closeSettings(){document.getElementById('overlay').classList.remove('show')}
+function overlayClick(e){if(e.target===document.getElementById('overlay'))closeSettings()}
+function pStep(d){pTimeVal=Math.min(60,Math.max(1,pTimeVal+d));document.getElementById('big-num').textContent=pTimeVal+'초';syncPchips(pTimeVal)}
+function pPreset(v){pTimeVal=v;document.getElementById('big-num').textContent=v+'초';syncPchips(v)}
+function syncPchips(v){document.querySelectorAll('.pchip').forEach(c=>c.classList.toggle('sel',parseInt(c.textContent)===v))}
+function pThemeFn(t){pThemeVal=t;syncTPs(t)}
+function applySettings(){AUTO_TIME=pTimeVal;document.getElementById('ac-val').textContent=AUTO_TIME+'초';applyTheme(pThemeVal);if(autoOn)startTimer();closeSettings()}
+
+buildList();
+applyTheme('dark');
+</script>
+</body>
+</html>
